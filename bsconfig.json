@@ -16,7 +16,7 @@
   ],
   "suffix": ".bs.js",
   "namespace": true,
-  "bs-dependencies": ["reason-react"],
-  "ppx-flags": [],
+  "bs-dependencies": ["reason-react", "@ahrefs/bs-emotion"],
+  "ppx-flags": ["@davesnx/styled-ppx/styled-ppx"],
   "refmt": 3
 }

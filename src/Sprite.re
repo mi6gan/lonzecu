@@ -1,12 +1,16 @@
 [@react.component]
-let make = (~x: int, ~y: int, ~src) =>
+let make = (~x: float, ~y: float, ~src) => {
+  let left = int_of_float(x);
+  let top = int_of_float(y);
   <img
-    style={ReactDOM.Style.make(
-      ~position="absolute",
-      ~left=Pervasives.string_of_int(x) ++ "px",
-      ~top=Pervasives.string_of_int(y) ++ "px",
-      ~width="100%",
-      (),
-    )}
+    className=[%css
+      {|
+      position: absolute;
+      width: 100%;
+      left: $left++px;
+      top: $top++px;
+    |}
+    ]
     src
   />;
+};
