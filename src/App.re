@@ -1,7 +1,7 @@
 [@react.component]
 let make = () => {
-  let (x: int, setX) = React.useState(_ => 0);
-  let (y: int, setY) = React.useState(_ => 0);
+  let (x, setX) = React.useState(_ => 0);
+  let (y, setY) = React.useState(_ => 0);
   <div
     onKeyDown={React.useCallback(event => {
       switch (ReactEvent.Keyboard.key(event)) {
