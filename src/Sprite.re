@@ -1,8 +1,3 @@
-type pos = {
-  x: int,
-  y: int,
-};
-
 [@react.component]
 let make = (~x: int, ~y: int, ~src) =>
   <img
