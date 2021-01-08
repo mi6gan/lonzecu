@@ -2,6 +2,7 @@
 .bsb.lock
 .merlin
 *.bs.js
+lib/*
 
 # yarn berry
 .yarn/*
