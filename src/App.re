@@ -32,14 +32,13 @@ let useMovementKeys = (incKey: string, decKey: string, velocity: float) => {
 
 [@react.component]
 let make = (~velocity=5.) => {
-  <div
-    className=[%css {|
-      position: relative;
-      width: 200px;
+  <div className=[%css {|
+      width:100%;
     |}]>
     <Sprite
       x={useMovementKeys("ArrowRight", "ArrowLeft", velocity)}
       y={useMovementKeys("ArrowDown", "ArrowUp", velocity)}
+      width=200.
       src="../assets/dragon.svg"
     />
   </div>;
