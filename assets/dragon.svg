@@ -1,5 +1,6 @@
 <svg width="210mm" height="297mm" version="1.1" viewBox="0 0 210 297" xmlns="http://www.w3.org/2000/svg">
  <style/>
+ <g id="dragon-root" style="transform-origin: center center;">
  <g id="left-arm">
   <g transform="matrix(.79924 0 0 .79924 42.643 45.735)">
    <path d="m137.92 160.82 1.575-1.3464 1.486 7.5292z" fill="#745050"/>
@@ -118,5 +119,6 @@
    <path d="m104.24 39.088-0.26027 1.2438" fill="none" stroke="#353535" stroke-width=".26458px"/>
    <path d="m113.38 36.879 0.63873 1.076" fill="none" stroke="#353535" stroke-width=".26458px"/>
   </g>
+ </g>
  </g>
 </svg>

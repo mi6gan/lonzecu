@@ -35,12 +35,10 @@ let make = (~velocity=5.) => {
   <div className=[%css {|
       width:100%;
     |}]>
-    <Sprite
+    <Dragon
       x={useMovementKeys("ArrowRight", "ArrowLeft", velocity)}
       y={useMovementKeys("ArrowDown", "ArrowUp", velocity)}
       width=200.
-      src="../assets/dragon.svg">
-      <rect x="1" y="1" width="100" height="100" />
-    </Sprite>
+    />
   </div>;
 };

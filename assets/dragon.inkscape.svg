@@ -18,7 +18,7 @@
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96">
   <style
-     id="style112"></style>
+     id="style112" />
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -28,8 +28,8 @@
      borderopacity="1.0"
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.7"
-     inkscape:cx="312.30456"
+     inkscape:zoom="0.67273769"
+     inkscape:cx="280.3456"
      inkscape:cy="583.19081"
      inkscape:document-units="mm"
      inkscape:current-layer="right-arm"
@@ -203,18 +203,6 @@
        sodipodi:nodetypes="cccc"
        inkscape:export-xdpi="96"
        inkscape:export-ydpi="96" />
-    <g
-       id="g1737"
-       style="stroke:none">
-      <g
-         id="g1749"
-         transform="matrix(0.93896749,0,0,0.85634485,6.7680897,27.571025)"
-         style="stroke:none">
-        <g
-           id="g1741"
-           style="stroke:none" />
-      </g>
-    </g>
     <rect
        style="font-variation-settings:normal;opacity:0.771;vector-effect:none;fill:#008cec;fill-opacity:0;stroke:none;stroke-width:0.347001;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;paint-order:fill markers stroke;stop-color:#000000;stop-opacity:1"
        id="rect1247"
@@ -353,8 +341,8 @@
      id="head"
      inkscape:groupmode="layer">
     <g
-       id="crest"
-       style="display:inline">
+       id="g1234"
+       style="display:inline;opacity:1">
       <path
          id="path1110-6-6-3-6"
          style="display:inline;mix-blend-mode:luminosity;fill:#008c00;fill-opacity:1;stroke:none;stroke-width:0.39896;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
