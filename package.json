@@ -20,11 +20,16 @@
   },
   "dependencies": {
     "@ahrefs/bs-emotion": "^2.0.0",
+    "@ahrefs/bs-emotion-ppx": "^2.0.0",
     "@davesnx/styled-ppx": "^0.20.0",
     "@jsiebern/bs-material-ui": "^2.0.2",
     "@material-ui/core": "^4.11.2",
+    "bs-emotion-ppx": "^0.0.6",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "reason-react": "0.9.1"
-  }
+  },
+  "workspaces": [
+    "packages/*"
+  ]
 }

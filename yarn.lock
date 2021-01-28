@@ -5,6 +5,13 @@ __metadata:
   version: 4
   cacheKey: 7
 
+"@ahrefs/bs-emotion-ppx@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "@ahrefs/bs-emotion-ppx@npm:2.0.0"
+  checksum: 80d6f590bfcf10a23a6ec5cbddd92b14bc2ef273329e4b639846d209a4efcb7a47971672cfccdd1cdf88923eda616f0dce5cafa04b46574e805f95bd3f2652e2
+  languageName: node
+  linkType: hard
+
 "@ahrefs/bs-emotion@npm:^2.0.0":
   version: 2.0.0
   resolution: "@ahrefs/bs-emotion@npm:2.0.0"
@@ -375,6 +382,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"bs-emotion-ppx@npm:^0.0.6":
+  version: 0.0.6
+  resolution: "bs-emotion-ppx@npm:0.0.6"
+  dependencies:
+    bsb-native: 4.0.7000
+  checksum: 12883389370c69b0f50e8ed1bfe89773df039f19d449be13b6098c5894be84d4faa39c332e9e6d6263cbc6a47a335823a21a1d5a531d686fe0c919e17b987dfb
+  languageName: node
+  linkType: hard
+
 "bs-platform@npm:*, bs-platform@npm:^8.4.2":
   version: 8.4.2
   resolution: "bs-platform@npm:8.4.2"
@@ -384,6 +400,26 @@ __metadata:
     bsrefmt: bsrefmt
     bstracing: lib/bstracing
   checksum: 60f84c4c63809031d2e8609f90ef877174b9461d8ca8e3697c921548648a7187ddc977ce210dd2df91568c5ffc46a8ffe16dcf8836ddb6637d6dcbaaef306a08
+  languageName: node
+  linkType: hard
+
+"bsb-native@npm:4.0.7000":
+  version: 4.0.7000
+  resolution: "bsb-native@npm:4.0.7000"
+  dependencies:
+    yauzl: ^2.9.1
+  bin:
+    bsb: lib/bsb
+    bsc: lib/bsc
+    bsrefmt: lib/bsrefmt
+  checksum: 1585842a790b0062699eb8d019e45243313544881b760d2f9d709652cbc443132478a1927650174950a882475cc352c61b05295ec5016d262c2a47f231ea5f29
+  languageName: node
+  linkType: hard
+
+"buffer-crc32@npm:~0.2.3":
+  version: 0.2.13
+  resolution: "buffer-crc32@npm:0.2.13"
+  checksum: 0340e848d6fd87e49ef6f1067f31b2a8d2e71b433e9bb62ff3d9bc2499146f0be586b5b80b0d099c7110a226161b21cb6cd80162dd5a51d9ebdb03da58b99637
   languageName: node
   linkType: hard
 
@@ -643,6 +679,15 @@ __metadata:
   version: 1.8.1
   resolution: "etag@npm:1.8.1"
   checksum: f18341a3c12a554ec46c0d4756bc9cae177e92f25a4ebd9ceefebf0ee448b675972fc110879f22b1bf514174713921ae5de9ff77af2062d422b1085588465a57
+  languageName: node
+  linkType: hard
+
+"fd-slicer@npm:~1.1.0":
+  version: 1.1.0
+  resolution: "fd-slicer@npm:1.1.0"
+  dependencies:
+    pend: ~1.2.0
+  checksum: ec759b16aea613f79540b450ffc278dcb927dccf55c89a364b68547441bec776d637f0a53aee9c9c70683406e4fc4b3aff29b1732bb388f9fa6ba200e8a79caa
   languageName: node
   linkType: hard
 
@@ -978,9 +1023,11 @@ __metadata:
   resolution: "lonzecu@workspace:."
   dependencies:
     "@ahrefs/bs-emotion": ^2.0.0
+    "@ahrefs/bs-emotion-ppx": ^2.0.0
     "@davesnx/styled-ppx": ^0.20.0
     "@jsiebern/bs-material-ui": ^2.0.2
     "@material-ui/core": ^4.11.2
+    bs-emotion-ppx: ^0.0.6
     bs-platform: ^8.4.2
     moduleserve: ^0.9.1
     npm-run-all: ^4.1.5
@@ -1229,6 +1276,13 @@ __metadata:
   version: 4.0.0
   resolution: "path-type@npm:4.0.0"
   checksum: ef5835f2eb47e4d06004c7ec7bd51175c0455eaecd5ee99a9774bca5ef43242616e25b44ccc0ba86a0bf42b9f197550fcc0dfa7580e5ff9dca53c035e9bd86a9
+  languageName: node
+  linkType: hard
+
+"pend@npm:~1.2.0":
+  version: 1.2.0
+  resolution: "pend@npm:1.2.0"
+  checksum: 35da01b2aa52458fbda2dceaeb5305c0d6c7262beca67d9f4c97bd70e4a8f4457f5fa01ffea3b3f786fb310b9b3b98515c52de3d7ae0b50dfb50b2a2d38d042b
   languageName: node
   linkType: hard
 
@@ -1661,5 +1715,15 @@ __metadata:
   version: 1.10.0
   resolution: "yaml@npm:1.10.0"
   checksum: d4cc9f9724f8d0aebc2cf52e4e6aa7059f12d50deb54b5225d103462fb2af36e5c0bb419101ca4b1f0cd3b4db9e4139cf2c690e863ac6227648d39d6f4e2522c
+  languageName: node
+  linkType: hard
+
+"yauzl@npm:^2.9.1":
+  version: 2.10.0
+  resolution: "yauzl@npm:2.10.0"
+  dependencies:
+    buffer-crc32: ~0.2.3
+    fd-slicer: ~1.1.0
+  checksum: 6d0c4e72706ec2df6ea842d09c792e7b34badc5db3d8a893e0c70d0e464c9bf82bac4b1690f3515b5e1d96b72fceb6cc4dd96465426077ba6dddc54e7dd4d517
   languageName: node
   linkType: hard
