@@ -44,7 +44,6 @@ module RotateLeftAnimation = {
 [@react.component]
 let make = (~x, ~y, ~width) => {
   let xRef = React.useRef(x);
-  let yRef = React.useRef(y);
   let (isWalking, setIsWalking) = React.useState(() => false);
   let (direction, setDirection) = React.useState(() => Right);
 
@@ -56,7 +55,7 @@ let make = (~x, ~y, ~width) => {
         switch (dx) {
         | v when v > 0. => Right
         | v when v < 0. => Left
-        | v when v == 0. => direction
+        | _ => direction
         }
       });
       None;
