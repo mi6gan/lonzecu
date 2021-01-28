@@ -5,14 +5,24 @@ type direction =
 module WalkAnimation = {
   [@react.component]
   let make = () => {
-    <animateTransform
-      attributeName="transform"
-      type_="rotate"
-      values="-15 100 100; 15 100 100; -15 100 100"
-      dur="0.5s"
-      href="#right-arm"
-      repeatCount="indefinite"
-    />;
+    <>
+      <animateTransform
+        attributeName="transform"
+        type_="rotate"
+        values="-15 100 100; 15 100 100; -15 100 100"
+        dur="0.5s"
+        href="#right-arm"
+        repeatCount="indefinite"
+      />
+      <animateTransform
+        attributeName="transform"
+        type_="rotate"
+        values="15 120 100; -15 120 100; 15 120 100"
+        dur="0.5s"
+        href="#left-arm"
+        repeatCount="indefinite"
+      />
+    </>;
   };
 };
 
