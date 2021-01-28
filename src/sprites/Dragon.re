@@ -8,8 +8,7 @@ module WalkAnimation = {
     <animateTransform
       attributeName="transform"
       type_="rotate"
-      from="0 100 100"
-      to_="-30 100 100"
+      values="-15 100 100; 15 100 100; -15 100 100"
       dur="0.5s"
       href="#right-arm"
       repeatCount="indefinite"
