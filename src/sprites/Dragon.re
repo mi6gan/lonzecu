@@ -2,45 +2,6 @@ type direction =
   | Left
   | Right;
 
-module WalkAnimation = {
-  [@react.component]
-  let make = () => {
-    <>
-      <animateTransform
-        attributeName="transform"
-        type_="rotate"
-        values="-15 100 100; 15 100 100; -15 100 100"
-        dur="0.5s"
-        href="#right-arm"
-        repeatCount="indefinite"
-      />
-      <animateTransform
-        attributeName="transform"
-        type_="rotate"
-        values="15 120 100; -15 120 100; 15 120 100"
-        dur="0.5s"
-        href="#left-arm"
-        repeatCount="indefinite"
-      />
-    </>;
-  };
-};
-
-module RotateLeftAnimation = {
-  [@react.component]
-  let make = () => {
-    <animateTransform
-      attributeName="transform"
-      type_="scale"
-      from="-1 1"
-      to_="-1 1"
-      dur="0.5s"
-      href="#dragon-root"
-      repeatCount="indefinite"
-    />;
-  };
-};
-
 [@react.component]
 let make = (~x, ~y, ~width) => {
   let xRef = React.useRef(x);
@@ -79,7 +40,36 @@ let make = (~x, ~y, ~width) => {
   );
 
   <Sprite src="../assets/dragon.svg" x y width>
-    {isWalking ? <WalkAnimation /> : ReasonReact.null}
-    {direction == Left ? <RotateLeftAnimation /> : ReasonReact.null}
+    {isWalking
+       ? <>
+           <animateTransform
+             attributeName="transform"
+             type_="rotate"
+             values="-15 100 100; 15 100 100; -15 100 100"
+             dur="0.5s"
+             href="#right-arm"
+             repeatCount="indefinite"
+           />
+           <animateTransform
+             attributeName="transform"
+             type_="rotate"
+             values="15 120 100; -15 120 100; 15 120 100"
+             dur="0.5s"
+             href="#left-arm"
+             repeatCount="indefinite"
+           />
+         </>
+       : ReasonReact.null}
+    {direction == Left
+       ? <animateTransform
+           attributeName="transform"
+           type_="scale"
+           from="-1 1"
+           to_="-1 1"
+           dur="0.5s"
+           href="#dragon-root"
+           repeatCount="indefinite"
+         />
+       : ReasonReact.null}
   </Sprite>;
 };
