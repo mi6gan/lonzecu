@@ -1,0 +1,22 @@
+diff --git a/babel-transform.js b/babel-transform.js
+index f8260be8e6d5105bdc30c529a025a17026bfbce8..34b61caa5095208243897d213518efe1eee04cac 100644
+--- a/babel-transform.js
++++ b/babel-transform.js
+@@ -6,7 +6,7 @@ exports.init = function(path) {
+     id: path,
+     paths: module_._nodeModulePaths(path).concat(module_.globalPaths)
+   }
+-  var resolved = module_._resolveFilename("babel-core", dummyMod)
++  var resolved = module_._resolveFilename("@babel/core", dummyMod)
+   babel = require(resolved)
+ }
+ 
+@@ -15,7 +15,7 @@ exports.transform = function(path, text) {
+   try {
+     return babel.transform(text, {
+       filename: path,
+-      sourceMaps: "inline"
++      cwd: `${__dirname}/../../`
+     }).code
+   } catch(e) {
+     return "console.error(" + JSON.stringify(e + "") + ")"

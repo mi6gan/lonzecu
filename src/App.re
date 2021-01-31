@@ -17,28 +17,25 @@ let useMovementKeys = (incKey: string, decKey: string, velocity: float) => {
     | k when List.exists(v => v == decKey, k) => -. velocity
     | _ => 0.
     };
-  React.useEffect(() => {
-    if (delta != 0.) {
-      let _ =
-        AnimationFrame.requestAnimationFrame(() =>
-          setValue(_ => value +. delta)
-        );
-      ();
-    };
-    None;
-  });
+
+  React.useEffect(() =>
+    switch (delta) {
+    | d when d != 0. =>
+      let requestId =
+        AnimationFrame.requestAnimationFrame(() => setValue(v => v +. d));
+      Some(() => AnimationFrame.cancelAnimationFrame(requestId));
+    | _ => None
+    }
+  );
+
   value;
 };
 
 [@react.component]
 let make = (~velocity=5.) => {
-  <div className=[%css {|
-      width:100%;
-    |}]>
-    <Dragon
-      x={useMovementKeys("ArrowRight", "ArrowLeft", velocity)}
-      y={useMovementKeys("ArrowDown", "ArrowUp", velocity)}
-      width=200.
-    />
-  </div>;
+  <Dragon
+    x={useMovementKeys("ArrowRight", "ArrowLeft", velocity)}
+    y={useMovementKeys("ArrowDown", "ArrowUp", velocity)}
+    width=200.
+  />;
 };

@@ -11,6 +11,9 @@ module Provider = {
 let make = (~children) => {
   let (value, setValue) = React.useState(() => []);
   <div
+    className=[%css {|
+      outline-style: none;
+    |}]
     onKeyDown={React.useCallback(event => {
       let key = ReactEvent.Keyboard.key(event);
       setValue(value =>

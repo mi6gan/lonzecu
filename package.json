@@ -10,11 +10,23 @@
     "build": "bsb -make-world",
     "start": "bsb -make-world -w -ws _ ",
     "clean": "bsb -clean-world",
-    "server": "moduleserve ./ --port 8000"
+    "server": "moduleserve ./ --port 8000 --transform babel"
   },
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/plugin-proposal-numeric-separator": "^7.12.7",
+    "@babel/plugin-transform-flow-strip-types": "^7.12.10",
+    "@babel/plugin-transform-modules-commonjs": "^7.12.1",
+    "@babel/preset-env": "^7.12.11",
+    "@babel/preset-react": "^7.12.10",
+    "@dr.pogodin/babel-preset-svgr": "^1.3.0",
+    "@svgr/babel-plugin-transform-svg-component": "^5.5.0",
+    "@svgr/cli": "^5.5.0",
+    "babel-plugin-inline-react-svg": "^1.1.2",
+    "babel-plugin-macros": "^3.0.1",
     "bs-platform": "^8.4.2",
-    "moduleserve": "^0.9.1",
+    "moduleserve": "patch:moduleserve@^0.9.1#moduleserve.diff",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.2.1"
   },
@@ -25,6 +37,7 @@
     "@jsiebern/bs-material-ui": "^2.0.2",
     "@material-ui/core": "^4.11.2",
     "bs-emotion-ppx": "^0.0.6",
+    "hooks.macro": "^1.1.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "reason-react": "0.9.1"
