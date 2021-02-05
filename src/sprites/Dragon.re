@@ -83,7 +83,6 @@ let make = (~x, ~y, ~width) => {
         |}
       ]
       style={ReactDOM.Style.make(
-        ~width=string_of_int(int_of_float(width)) ++ "px",
         ~left=string_of_int(int_of_float(x)) ++ "px",
         ~top=string_of_int(int_of_float(y)) ++ "px",
         (),
@@ -100,29 +99,30 @@ let make = (~x, ~y, ~width) => {
     {switch (Js.toOption(svg)) {
      | Some(container) =>
        ReactDOM.createPortal(
-           {switch (action) {
-            | Walk(_) =>
-              <>
-                <RotateAnimation
-                  href="#right-arm"
-                  values="-15 100 100; 15 100 100; -15 100 100"
-                />
-                <RotateAnimation
-                  href="#right-leg"
-                  values="10 88 172; -10 88 172; 10 88 172"
-                />
-                <RotateAnimation
-                  href="#left-arm"
-                  values="15 120 100; -15 120 100; 15 120 100"
-                />
-                <RotateAnimation
-                  href="#left-leg"
-                  values="-10 118 151; 10 108 151; -10 118 151"
-                />
-              </>
-            | _ => ReasonReact.null
-            }}
-         ,
+         {
+           switch (action) {
+           | Walk(_) =>
+             <>
+               <RotateAnimation
+                 href="#right-arm"
+                 values="-15 100 100; 15 100 100; -15 100 100"
+               />
+               <RotateAnimation
+                 href="#right-leg"
+                 values="10 88 172; -10 88 172; 10 88 172"
+               />
+               <RotateAnimation
+                 href="#left-arm"
+                 values="15 120 100; -15 120 100; 15 120 100"
+               />
+               <RotateAnimation
+                 href="#left-leg"
+                 values="-10 118 151; 10 108 151; -10 118 151"
+               />
+             </>
+           | _ => ReasonReact.null
+           };
+         },
          container,
        )
      | None => ReasonReact.null
