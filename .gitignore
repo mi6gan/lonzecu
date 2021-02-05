@@ -3,6 +3,7 @@
 .merlin
 *.bs.js
 lib/*
+assets/modules.css
 
 # yarn berry
 .yarn/*
