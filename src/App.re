@@ -32,7 +32,7 @@ let useMovementKeys = (incKey: string, decKey: string, velocity: float) => {
 };
 
 [@react.component]
-let make = (~velocity=5.) => {
+let make = (~velocity=4.) => {
   <Dragon
     x={useMovementKeys("ArrowRight", "ArrowLeft", velocity)}
     y={useMovementKeys("ArrowDown", "ArrowUp", velocity)}

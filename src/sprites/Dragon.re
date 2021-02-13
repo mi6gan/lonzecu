@@ -2,8 +2,11 @@ type direction =
   | Left
   | Right;
 type action =
-  | Walk(direction)
-  | Stand(direction);
+  | Walk
+  | Stop
+  | Stand;
+type state =
+  | State(action, direction);
 
 module Dragon = {
   [@bs.module "./Dragon.svg"] [@react.component]
@@ -20,22 +23,64 @@ module Dragon = {
 
 module RotateAnimation = {
   [@react.component]
-  let make = (~href: string, ~values: string) => {
+  let make = (~href, ~values, ~dur=?, ~repeatCount=?, ~onEndEvent) => {
+    let (element, setElement) = React.useState(_ => Js.Nullable.null);
+
+    React.useEffect2(
+      () =>
+        switch (Js.toOption(element)) {
+        | Some(domElement) =>
+          let node = ReactDOM.domElementToObj(domElement);
+          switch (repeatCount) {
+          | None =>
+            node##endElement();
+            None;
+          | Some("indefinite") =>
+            node##beginElement();
+            None;
+          | Some(_) =>
+            node##addEventListener("endEvent", onEndEvent);
+            Some(() => node##removeEventListener("endEvent", onEndEvent));
+          };
+        | None => None
+        },
+      (repeatCount, element),
+    );
     <animateTransform
+      ref={ReactDOM.Ref.callbackDomRef(element => {
+        setElement(null =>
+          switch (Js.toOption(element)) {
+          | None => null
+          | Some(_) => element
+          }
+        )
+      })}
+      fill="freeze"
       attributeName="transform"
       type_="rotate"
-      dur="0.5s"
-      repeatCount="indefinite"
+      ?dur
+      ?repeatCount
       href
       values
     />;
   };
 };
 
+module Utils = {
+  let toOption =
+    fun
+    | "" => None
+    | v => Some(v);
+
+  let toOptions =
+    fun
+    | (a, b) => (toOption(a), toOption(b));
+};
+
 [@react.component]
 let make = (~x, ~y, ~width) => {
   let (svg, setSvg) = React.useState(() => Js.Nullable.null);
-  let (action, setAction) = React.useState(() => Stand(Right));
+  let (action, setAction) = React.useState(() => State(Stand, Right));
   let xRef = React.useRef(x);
   let dx = x -. xRef.current;
 
@@ -43,19 +88,17 @@ let make = (~x, ~y, ~width) => {
     () => {
       setAction(action => {
         switch (dx) {
-        | v when v > 0. => Walk(Right)
-        | v when v < 0. => Walk(Left)
+        | v when v != 0. => State(Walk, v > 0. ? Right : Left)
         | _ => action
         }
       });
       let timeoutId =
         Js.Global.setTimeout(
           () =>
-            setAction(_ =>
-              switch (action) {
-              | Walk(dir) => Stand(dir)
-              | _ => action
-              }
+            setAction(
+              fun
+              | State(Walk, dir) => State(Stop, dir)
+              | v => v,
             ),
           250,
         );
@@ -70,7 +113,20 @@ let make = (~x, ~y, ~width) => {
   );
 
   let scale =
-    action == Stand(Left) || action == Walk(Left) ? "scaleX(-1)" : "";
+    switch (action) {
+    | State(_, Left) => "scaleX(-1)"
+    | _ => ""
+    };
+
+  let onEndEvent =
+    React.useCallback1(
+      _ =>
+        setAction(
+          fun
+          | State(_, dir) => State(Stand, dir),
+        ),
+      [|setAction|],
+    );
 
   <>
     <Dragon
@@ -98,33 +154,48 @@ let make = (~x, ~y, ~width) => {
     />
     {switch (Js.toOption(svg)) {
      | Some(container) =>
-       ReactDOM.createPortal(
-         {
+       let (dur, repeatCount) =
+         Utils.toOptions(
            switch (action) {
-           | Walk(_) =>
-             <>
-               <RotateAnimation
-                 href="#right-arm"
-                 values="-15 100 100; 15 100 100; -15 100 100"
-               />
-               <RotateAnimation
-                 href="#right-leg"
-                 values="10 88 172; -10 88 172; 10 88 172"
-               />
-               <RotateAnimation
-                 href="#left-arm"
-                 values="15 120 100; -15 120 100; 15 120 100"
-               />
-               <RotateAnimation
-                 href="#left-leg"
-                 values="-10 118 151; 10 108 151; -10 118 151"
-               />
-             </>
-           | _ => ReasonReact.null
-           };
-         },
+           | State(Walk, _) => ("0.5s", "indefinite")
+           | State(Stop, _) => ("0.5s", "1")
+           | State(_, _) => ("", "")
+           },
+         );
+
+       ReactDOM.createPortal(
+         <>
+           <RotateAnimation
+             href="#right-arm"
+             values="0; 15; 0; -15; 0"
+             ?repeatCount
+             ?dur
+             onEndEvent
+           />
+           <RotateAnimation
+             href="#right-leg"
+             values="0; 10; 0; -10; 0"
+             ?repeatCount
+             ?dur
+             onEndEvent
+           />
+           <RotateAnimation
+             href="#left-arm"
+             values="0; -15; 0; 15; 0"
+             ?repeatCount
+             ?dur
+             onEndEvent
+           />
+           <RotateAnimation
+             href="#left-leg"
+             values="0; -10; 0; 10; 0"
+             ?repeatCount
+             ?dur
+             onEndEvent
+           />
+         </>,
          container,
-       )
+       );
      | None => ReasonReact.null
      }}
   </>;
